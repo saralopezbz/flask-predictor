@@ -1,7 +1,7 @@
-# Imagen base con Python 3.11
+# Imagen base oficial con Python 3.11
 FROM python:3.11-slim
 
-# Establecer directorio de trabajo dentro del contenedor
+# Establecer el directorio de trabajo
 WORKDIR /app
 
 # Copiar los archivos necesarios
@@ -10,13 +10,13 @@ COPY modelo.pkl .
 COPY app.py .
 COPY train_model.py .
 COPY test_api.py .
-COPY postman_collection.json .
+COPY tryapi.py .
 
 # Instalar dependencias
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Exponer el puerto donde correrá Flask
+# Exponer el puerto en el que corre Flask
 EXPOSE 5000
 
-# Comando por defecto: ejecutar la API
+# Comando para ejecutar la API Flask
 CMD ["python", "app.py"]

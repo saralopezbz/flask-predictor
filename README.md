@@ -94,3 +94,5 @@ docker run -p 5000:5000 saralopezbz/flask-predictor
 **Sara López**
 
 Proyecto para Evaluación Modular: *Desarrollo de una API REST para predicción con ML usando Flask y Docker.*
+
+https://github.com/saralopezbz/flask-predictor

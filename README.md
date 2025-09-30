@@ -45,7 +45,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-## 💪 Probar la API
+## 🧪 Probar la API
 
 Puedes usar Postman o ejecutar los scripts de prueba:
 
@@ -53,6 +53,26 @@ Puedes usar Postman o ejecutar los scripts de prueba:
 python tryapi.py
 python test_api.py
 ```
+
+---
+
+## ⚙️ Integración Continua con GitHub Actions
+
+Este repositorio incluye una acción de GitHub para verificar automáticamente que la API funcione correctamente.
+
+### 📄 Archivo de configuración
+
+* Ruta: `.github/workflows/test.yml`
+
+### 🔍 ¿Qué hace?
+
+1. Instala dependencias con `requirements.txt`
+2. Ejecuta el servidor Flask
+3. Lanza pruebas automatizadas con `test_api.py`
+
+### ✅ Resultado
+
+Cada push al repositorio ejecutará esta acción y mostrará si las pruebas pasan o fallan directamente en GitHub.
 
 ---
 

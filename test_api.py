@@ -177,33 +177,29 @@ def test_predict_invalid_cases():
 
 
 def test_curl_examples():
-    """Muestra ejemplos de comandos curl para pruebas manuales."""
-    print("\n" + "="*50)
+    print("\n" + "=" * 50)
     print("EJEMPLOS DE COMANDOS CURL")
-    print("="*50)
-    
+    print("=" * 50)
+
     curl_commands = [
-        {
-            "description": "Endpoint principal",
-            "command": f'curl -X GET {BASE_URL}/'
-        },
-        {
-            "description": "Predicción válida (Iris Setosa)",
-            "command": f'curl -X POST {BASE_URL}/predict -H "Content-Type: application/json" -d \'{"features": [5.1, 3.5, 1.4, 0.2]}\''
-        },
-        {
-            "description": "Predicción válida (Iris Versicolor)",
-            "command": f'curl -X POST {BASE_URL}/predict -H "Content-Type: application/json" -d \'{"features": [7.0, 3.2, 4.7, 1.4]}\''
-        },
-        {
-            "description": "Caso de error (características insuficientes)",
-            "command": f'curl -X POST {BASE_URL}/predict -H "Content-Type: application/json" -d \'{"features": [1, 2, 3]}\''
-        }
-    ]
-    
-    for i, cmd in enumerate(curl_commands, 1):
-        print(f"\n{i}. {cmd['description']}:")
-        print(f"   {cmd['command']}")
+    {
+        "description": "Predicción válida - Iris Setosa",
+        "command": f"""curl -X POST {BASE_URL}/predict -H "Content-Type: application/json" -d '{{"features": [5.1, 3.5, 1.4, 0.2]}}'"""
+    },
+    {
+        "description": "Error - JSON sin 'features'",
+        "command": f"""curl -X POST {BASE_URL}/predict -H "Content-Type: application/json" -d '{{"data": [1, 2, 3, 4]}}'"""
+    },
+    {
+        "description": "GET estado",
+        "command": f"""curl {BASE_URL}/"""
+    }
+]
+
+
+    for cmd in curl_commands:
+        print(f"\n💬 {cmd['description']}")
+        print(f"🔧 Comando:\n{cmd['command']}")
 
 
 def main():

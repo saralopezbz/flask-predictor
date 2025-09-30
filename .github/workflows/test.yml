@@ -1,16 +1,17 @@
-name: Evaluación de la API
+name: test
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Clonar repositorio
+    - name: Checkout código
       uses: actions/checkout@v3
 
     - name: Configurar Python
@@ -23,6 +24,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Ejecutar tests
+    - name: Iniciar servidor Flask
       run: |
-        python test_api.py
+        nohup python app.py &
+      env:
+        PYTHONUNBUFFERED: "1"
+
+    - name: Esperar al servidor
+      run: sleep 5
+
+    - name: Ejecutar pruebas
+      run: python test_api.py

@@ -66,4 +66,4 @@ Predicciones correctas
 
 Manejo de errores comunes
 
-Estructura de la respuesta
+Estructura de la respuesta# Comentario para activar Action
